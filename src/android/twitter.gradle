@@ -1,0 +1,10 @@
+repositories {
+  mavenCentral()
+  maven { url 'https://maven.fabric.io/public' }
+}
+
+dependencies {
+  compile('com.digits.sdk.android:digits:1.9.2@aar') {
+    transitive = true
+  }
+}

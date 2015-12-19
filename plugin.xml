@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+			id="twitter-digits-plugin"
+	  version="0.4.0">
+	<name>Twitter Digits</name>
+	<description>Twitter Digits Plugin - Allow phone number login using Twitter Digits</description>
+	<license>TBD</license>
+	<keywords>cordova,twitter,digits,phone number login</keywords>
+	<repo>https://github.com/nifino/twitter-digits-plugin.git</repo>
+
+	<engines>
+		<engine name="cordova-android" version=">3.9.9" /><!-- Requires Gradle building -->
+	</engines>
+
+	<js-module src="www/TwitterDigits.js" name="TwitterDigits">
+		<clobbers target="TwitterDigits" />
+	</js-module>
+
+	<preference name="FABRIC_KEY" />
+	
+	<!-- android -->
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="TwitterDigits">
+				<param name="android-package" value="com.nifino.login.TwitterDigits" />
+			</feature>
+		</config-file>
+		
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<meta-data android:name="io.fabric.ApiKey" android:value="$FABRIC_KEY" />
+		</config-file>
+		
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+			<uses-permission android:name="android.permission.RECEIVE_SMS"/>
+			<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+		</config-file>
+		 
+		<framework src="src/android/twitter.gradle" custom="true" type="gradleReference" />
+		<source-file src="src/android/TwitterDigits.java" target-dir="src/com/nifino/login" />
+		<resource-file src="digitsCustomTheme.xml" target="res/values/digitsCustomTheme.xml" />
+	</platform>
+	
+	<!-- ios -->
+	<!-- <platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="TwitterDigits">
+				<param name="ios-package" value="TwitterDigits" />
+			</feature>
+		</config-file>
+		
+		<header-file src="src/ios/TwitterDigits.h" />
+		<source-file src="src/ios/TwitterDigits.m" />
+		
+		<framework src="src/ios/Fabric.framework" custom="true" />
+		<framework src="src/ios/TwitterKit.framework" custom="true" />
+		<resource-file src="src/ios/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle" />
+		<framework src="CoreText.framework" />
+		<framework src="AddressBook.framework" />
+		<framework src="QuartzCore.framework" />
+		<config-file target="*-Info.plist" parent="Fabric">
+			<dict>
+				<key>APIKey</key>
+				<string>$DIGITS_KEY</string>
+				<key>Kits</key>
+				<array></array>
+			</dict>
+		</config-file>
+	</platform> -->
+</plugin>

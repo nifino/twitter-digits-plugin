@@ -1,0 +1,35 @@
+{
+  "name": "twitter-digits-plugin",
+  "version": "0.4.0",
+  "description": "Twitter Digits Plugin - Phone number logins using Twitter Digits",
+  "cordova": {
+    "id": "twitter-digits-plugin",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nifino/twitter-digits-plugin.git"
+  },
+  "keywords": [
+    "cordova",
+    "twitter",
+    "digits",
+    "phone number login",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova-android",
+      "version": ">3.9.9"
+    }
+  ],
+  "author": "hahnml",
+  "license": "TBD",
+  "bugs": {
+    "url": "https://github.com/nifino/twitter-digits-plugin/issues"
+  },
+  "homepage": "https://github.com/nifino/twitter-digits-plugin#readme"
+}
