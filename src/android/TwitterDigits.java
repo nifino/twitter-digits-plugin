@@ -136,7 +136,6 @@ public class TwitterDigits extends CordovaPlugin {
 			response.put("token", authToken.token);
 			response.put("phoneNumber", phoneNumber);
 			
-			response.put("verifyCredentialsUrl", DigitsOAuthSigning.VERIFY_CREDENTIALS_URL);
 			response.put("verifyCredentialsAuthHeader", oauthSigning.getOAuthEchoHeadersForVerifyCredentials().get("X-Verify-Credentials-Authorization"));
 			
 		} catch (JSONException e) {
