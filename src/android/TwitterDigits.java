@@ -1,5 +1,6 @@
 package com.nifino.login;
 
+
 import io.fabric.sdk.android.Fabric;
 
 import org.apache.cordova.CallbackContext;
@@ -19,6 +20,7 @@ import com.digits.sdk.android.AuthCallback;
 import com.digits.sdk.android.Digits;
 import com.digits.sdk.android.DigitsAuthConfig;
 import com.digits.sdk.android.DigitsAuthConfig.Builder;
+import com.digits.sdk.android.DigitsOAuthSigning;
 import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsSession;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
@@ -124,15 +126,19 @@ public class TwitterDigits extends CordovaPlugin {
 	private JSONObject handleResult(DigitsSession result, String phoneNumber) {
 		JSONObject response = new JSONObject();
 		try {
-			
 			TwitterAuthToken authToken = (TwitterAuthToken) result
 					.getAuthToken();
+			
 			DigitsOAuthSigning oauthSigning = new DigitsOAuthSigning(authConfig, authToken);
 			
 			response.put("userId", result.getId());
 			response.put("secret", authToken.secret);
 			response.put("token", authToken.token);
 			response.put("phoneNumber", phoneNumber);
+			
+			response.put("verifyCredentialsUrl", DigitsOAuthSigning.VERIFY_CREDENTIALS_URL);
+			response.put("verifyCredentialsAuthHeader", oauthSigning.getOAuthEchoHeadersForVerifyCredentials().get("X-Verify-Credentials-Authorization"));
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
