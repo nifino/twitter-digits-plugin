@@ -34,10 +34,12 @@ public class TwitterDigits extends CordovaPlugin {
 	private Digits digits = null;
 	
 	private AuthCallback authCallback= null;
+	
+	private TwitterAuthConfig authConfig = null;
 
 	public void initialize(CordovaInterface cordova, CordovaWebView webView) {
 		super.initialize(cordova, webView);
-		TwitterAuthConfig authConfig = new TwitterAuthConfig(getTwitterKey(),
+		authConfig = new TwitterAuthConfig(getTwitterKey(),
 				getTwitterSecret());
 
 		this.twitter = new TwitterCore(authConfig);
@@ -122,8 +124,11 @@ public class TwitterDigits extends CordovaPlugin {
 	private JSONObject handleResult(DigitsSession result, String phoneNumber) {
 		JSONObject response = new JSONObject();
 		try {
+			
 			TwitterAuthToken authToken = (TwitterAuthToken) result
 					.getAuthToken();
+			DigitsOAuthSigning oauthSigning = new DigitsOAuthSigning(authConfig, authToken);
+			
 			response.put("userId", result.getId());
 			response.put("secret", authToken.secret);
 			response.put("token", authToken.token);
