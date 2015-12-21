@@ -1,6 +1,7 @@
 # twitter-digits-plugin
 
 Cordova plugin to use Twitter Digits single sign on with a phone number.
+The plugin bases on the following docs: https://docs.fabric.io/android/digits/digits.html
 
 ### Install
 
@@ -9,11 +10,11 @@ Cordova plugin to use Twitter Digits single sign on with a phone number.
 Information about how to get these keys can be found here [https://fabric.io](https://fabric.io) and here [https://github.com/twitter/digits-android](https://github.com/twitter/digits-android).
 
 ##### Add the plugin to your Cordova or Ionic app
-`cordova plugin add https://github.com/hahnml/twitter-digits-plugin.git --variable FABRIC_KEY=<Fabric API Key>`
+`cordova plugin add https://github.com/nifino/twitter-digits-plugin.git --variable FABRIC_KEY=<Fabric API Key>`
 
 or
 
-`ionic plugin add https://github.com/hahnml/twitter-digits-plugin.git --variable FABRIC_KEY=<Fabric API Key>`
+`ionic plugin add https://github.com/nifino/twitter-digits-plugin.git --variable FABRIC_KEY=<Fabric API Key>`
 
 ##### Adapt the project's config.xml file
 Open the `config.xml` file located in your project's root directory and add the following two lines before the closing ```</widget>``` tag:
