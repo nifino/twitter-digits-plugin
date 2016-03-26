@@ -65,3 +65,5 @@ The login reponse object is defined as:
   phoneNumber: '<Phone Number>'
 }
 ````
+
+This project is licensed under the MIT license. 
